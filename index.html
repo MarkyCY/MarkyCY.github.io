@@ -497,10 +497,11 @@
                     btn.style.display = 'block';
                     alert(result.error);
                 } else {
-                    btn.textContent   = 'Unknown error';
+                    //btn.textContent   = 'Unknown error';
+                    btn.textContent   = result;
                     btn.className     = 'err';
                     btn.style.display = 'block';
-                    alert(result.error);
+                    alert(result);
                     //alert('Unknown error');
                 }
             });
