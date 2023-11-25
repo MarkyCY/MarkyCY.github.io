@@ -721,10 +721,10 @@
             fetch('http://127.0.0.1/message', {
                 method : "POST",
                 body : JSON.stringify(Object.assign(data, {
-                    //_auth : authData,
+                    _auth : authData,
                     method: methods,
                 })),
-                //credentials: 'include',
+                credentials: 'include',
                 headers    : {
                     'Content-Type': 'application/json'
                 }
@@ -734,7 +734,7 @@
                 onCallback && onCallback(result);
             }).catch(function (error) {
                 onCallback && onCallback({error: JSON.stringify(Object.assign(data, {
-                    //_auth : authData,
+                    _auth : authData,
                     method: methods,
                 }))});
             });
