@@ -716,9 +716,8 @@
             // CHANGE THIS CODE TO YOUR OWN
             //return onCallback && onCallback({error: 'This function (' + method + ') should send requests to your backend. Please, change this code to your own.'});
 
-            const authData = DemoApp.initData || '';
-            axios.post('http://127.0.0.1/message', JSON.stringify(Object.assign(data, {
-                //_auth : authData,
+            //const authData = DemoApp.initData || '';
+            /*axios.post('http://127.0.0.1/message', JSON.stringify(Object.assign(data, {
                 method: methods,
             })))
                 .then(function (response) {
@@ -729,10 +728,28 @@
                 })
                 .catch(function (error) {
                     onCallback && onCallback({error: JSON.stringify(Object.assign(data, {
-                        //_auth : authData,
                         method: methods,
                     }))});
-                });
+                });*/
+            axios.post('http://127.0.0.1/message', JSON.stringify(Object.assign(data, {
+                _auth : authData,
+                method: methods,
+            })), {
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function (response) {
+                return response.data;
+            }).then(function (result) {
+                onCallback && onCallback(result);
+            }).catch(function (error) {
+                onCallback && onCallback({error: JSON.stringify(Object.assign(data, {
+                    _auth : authData,
+                    method: methods,
+                }))});
+            });
+            
         }
     }
 
