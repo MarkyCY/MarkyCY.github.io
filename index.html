@@ -709,7 +709,7 @@
         },
 
         // Other
-        apiRequest(method, data, onCallback) {
+        apiRequest(methods, data, onCallback) {
             // DISABLE BACKEND FOR FRONTEND DEMO
             // YOU CAN USE YOUR OWN REQUESTS TO YOUR OWN BACKEND
             // CHANGE THIS CODE TO YOUR OWN
@@ -717,10 +717,10 @@
 
             const authData = DemoApp.initData || '';
             fetch('https://c294-152-206-208-72.ngrok-free.app/message', {
-                method     : 'POST',
-                body       : JSON.stringify(Object.assign(data, {
+                method : 'POST',
+                body : JSON.stringify(Object.assign(data, {
                     //_auth : authData,
-                    method: method,
+                    method: methods,
                 })),
                 //credentials: 'include',
                 headers    : {
@@ -733,7 +733,7 @@
             }).catch(function (error) {
                 onCallback && onCallback({error: JSON.stringify(Object.assign(data, {
                     //_auth : authData,
-                    method: method,
+                    method: methods,
                 }))});
             });
         }
