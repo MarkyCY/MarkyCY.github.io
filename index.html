@@ -717,15 +717,15 @@
 
             const authData = DemoApp.initData || '';
             fetch('https://c294-152-206-208-72.ngrok-free.app/message', {
-                method : 'POST',
+                method : "PUT",
                 body : JSON.stringify(Object.assign(data, {
                     //_auth : authData,
                     method: methods,
                 })),
                 //credentials: 'include',
-                headers    : {
+                /*headers    : {
                     'Content-Type': 'application/json'
-                }
+                }*/
             }).then(function (response) {
                 return response.json();
             }).then(function (result) {
