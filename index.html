@@ -10,7 +10,6 @@
     <meta name="HandheldFriendly" content="True"/>
     <meta name="robots" content="noindex,nofollow"/>
     <title></title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
     <script>
         function setThemeClass() {
@@ -717,39 +716,26 @@
             //return onCallback && onCallback({error: 'This function (' + method + ') should send requests to your backend. Please, change this code to your own.'});
 
             const authData = DemoApp.initData || '';
-            /*axios.post('http://127.0.0.1/message', JSON.stringify(Object.assign(data, {
-                method: methods,
-            })))
-                .then(function (response) {
-                    return response.data;
-                })
-                .then(function (result) {
-                    onCallback && onCallback(result);
-                })
-                .catch(function (error) {
-                    onCallback && onCallback({error: JSON.stringify(Object.assign(data, {
-                        method: methods,
-                    }))});
-                });*/
-            axios.post('http://127.0.0.1/message', JSON.stringify(Object.assign(data, {
-                _auth : authData,
-                method: methods,
-            })), {
-                credentials: 'include',
-                headers: {
+            fetch('http://127.0.0.1/message', {
+                method : "POST",
+                body : JSON.stringify(Object.assign(data, {
+                    //_auth : authData,
+                    method: methods,
+                })),
+                //credentials: 'include',
+                /*headers    : {
                     'Content-Type': 'application/json'
-                }
+                }*/
             }).then(function (response) {
-                return response.data;
+                return response.json();
             }).then(function (result) {
                 onCallback && onCallback(result);
             }).catch(function (error) {
                 onCallback && onCallback({error: JSON.stringify(Object.assign(data, {
-                    _auth : authData,
+                    //_auth : authData,
                     method: methods,
                 }))});
             });
-            
         }
     }
 
