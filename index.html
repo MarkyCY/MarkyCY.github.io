@@ -4,8 +4,10 @@
           Telegram.WebApp.ready();
           let initDataContent = Telegram.WebApp.initData;
           console.log('Contenido de initData:', initDataContent);
+          alert(initDataContent)
         } else {
           console.error('El script de Telegram no se ha cargado correctamente.');
+          alert('El script de Telegram no se ha cargado correctamente.')
         }
       });
     </script> <div class="fixed left-0 top-0 -z-10 h-full w-full"> <div class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)] dark:bg-black dark:[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div> </div> <header class="
